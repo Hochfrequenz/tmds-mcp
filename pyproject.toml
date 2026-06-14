@@ -32,32 +32,32 @@ dependencies = [
 
 [project.optional-dependencies]
 tests = [
-    "pytest>=9",
-    "pytest-asyncio>=0.24",
-    "pytest-mock>=3",
+    "pytest==9.0.3",
+    "pytest-asyncio==1.4.0",
+    "pytest-mock==3.15.1",
 ]
 linting = [
-    "pylint>=4",
+    "pylint==4.0.5",
 ]
 type_check = [
-    "mypy>=1.10",
+    "mypy==2.1.0",
 ]
 spell_check = [
-    "codespell>=2",
+    "codespell==2.4.2",
 ]
 coverage = [
-    "coverage>=7",
+    "coverage==7.14.1",
 ]
 formatting = [
-    "black>=25",
-    "isort>=5",
+    "black==26.5.1",
+    "isort==8.0.1",
 ]
 packaging = [
-    "build>=1",
-    "twine>=6",
+    "build==1.5.0",
+    "twine==6.2.0",
 ]
 dev = [
-    "pip-tools",
+    "pip-tools==7.5.3",
 ]
 
 [project.scripts]
