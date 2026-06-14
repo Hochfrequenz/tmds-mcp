@@ -24,7 +24,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "tmdsclient>=0.1",
+    "tmdsclient>=0.7.1",
     "fastmcp>=3.0",
     "pydantic-settings>=2.7",
     "python-dotenv>=1.0",
