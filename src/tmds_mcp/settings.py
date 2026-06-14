@@ -4,8 +4,8 @@ from enum import StrEnum
 
 from pydantic import HttpUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from tmdsclient.client.tmdsclient import BasicAuthTmdsClient, OAuthTmdsClient, TmdsClient
 from tmdsclient.client.config import BasicAuthTmdsConfig, OAuthTmdsConfig
+from tmdsclient.client.tmdsclient import BasicAuthTmdsClient, OAuthTmdsClient, TmdsClient
 from yarl import URL
 
 
