@@ -16,7 +16,7 @@ aiosignal==1.4.0
     # via aiohttp
 annotated-types==0.7.0
     # via pydantic
-anyio==4.13.0
+anyio==4.14.0
     # via
     #   httpx
     #   mcp
@@ -126,7 +126,7 @@ keyring==25.7.0
     # via py-key-value-aio
 markdown-it-py==4.2.0
     # via rich
-mcp==1.27.2
+mcp==1.28.0
     # via fastmcp-slim
 mdurl==0.1.2
     # via markdown-it-py
@@ -167,7 +167,7 @@ pydantic[email]==2.13.4
     #   tmdsclient
 pydantic-core==2.46.4
     # via pydantic
-pydantic-settings==2.14.1
+pydantic-settings==2.14.2
     # via
     #   fastmcp-slim
     #   mcp
