@@ -35,7 +35,7 @@ authlib==1.7.2
     # via fastmcp-slim
 beartype==0.22.9
     # via py-key-value-aio
-bo4e==202501.0.0
+bo4e==202607.0.0
     # via tmdsclient
 cachetools==7.1.4
     # via py-key-value-aio
