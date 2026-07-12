@@ -209,7 +209,7 @@ rich==15.0.0
     #   rich-rst
 rich-rst==2.1.0
     # via cyclopts
-rpds-py==2026.5.1
+rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
