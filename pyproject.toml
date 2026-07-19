@@ -57,7 +57,7 @@ packaging = [
     "twine==6.2.0",
 ]
 dev = [
-    "pip-tools==7.5.3",
+    "pip-tools==7.6.0",
 ]
 
 [project.scripts]
