@@ -37,7 +37,7 @@ beartype==0.22.9
     # via py-key-value-aio
 bo4e==202607.0.0
     # via tmdsclient
-cachetools==7.1.4
+cachetools==7.1.6
     # via py-key-value-aio
 caio==0.9.25
     # via aiofile
