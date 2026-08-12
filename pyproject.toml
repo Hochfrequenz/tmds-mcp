@@ -56,7 +56,6 @@ formatting = [
     "isort==8.0.1",
 ]
 dev = [
-    "pre-commit",
     {include-group = "tests"},
     {include-group = "linting"},
     {include-group = "type_check"},
