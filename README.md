@@ -85,13 +85,21 @@ Install the full dev environment with:
 uv sync --group dev
 ```
 
-Run the individual checks (each `--group` pulls in only what it needs):
+Run the individual checks exactly as CI does (each `--group` pulls in only what it needs):
 
 ```bash
-PYTHONPATH=src uv run --group tests pytest                                    # run tests
-PYTHONPATH=src uv run --group type_check mypy --show-error-codes src/tmds_mcp --strict  # mypy --strict
-PYTHONPATH=src uv run --group linting pylint tmds_mcp                         # pylint
-PYTHONPATH=src uv run --group coverage coverage run -m pytest                 # coverage ≥ 80 %
-uv run --group formatting black . --check                                     # black
-uv run --group formatting isort . --check                                     # isort
+# tests
+PYTHONPATH=src uv run --group tests pytest
+# type_check (mypy --strict)
+PYTHONPATH=src uv run --group type_check mypy --show-error-codes src/tmds_mcp --strict
+PYTHONPATH=src uv run --group type_check mypy --show-error-codes unittests --strict
+# linting (pylint)
+PYTHONPATH=src uv run --group linting pylint tmds_mcp
+PYTHONPATH=src uv run --group linting pylint unittests --rcfile=unittests/.pylintrc
+# coverage ≥ 80 %
+PYTHONPATH=src uv run --group coverage coverage run -m pytest
+PYTHONPATH=src uv run --group coverage coverage report --fail-under 80 --omit "unittests/*"
+# formatting (black + isort)
+uv run --group formatting black . --check
+uv run --group formatting isort . --check
 ```

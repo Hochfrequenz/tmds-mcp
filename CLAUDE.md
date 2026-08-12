@@ -34,12 +34,21 @@ The server only exposes read-only `TmdsClient` methods. Write operations (`updat
 
 ## CI
 
-```
-uv run --group tests pytest                 # pytest
-uv run --group type_check mypy --strict     # mypy --strict
-uv run --group linting pylint tmds_mcp      # pylint
-uv run --group coverage coverage run -m pytest  # coverage ≥ 80%
-uv run --group formatting black . --check   # black + isort
-```
+Set `PYTHONPATH=src` (src layout) for the commands that need it — matches CI:
 
-(Set `PYTHONPATH=src` for the src layout.)
+```
+# pytest
+PYTHONPATH=src uv run --group tests pytest
+# mypy --strict (src + unittests)
+PYTHONPATH=src uv run --group type_check mypy --show-error-codes src/tmds_mcp --strict
+PYTHONPATH=src uv run --group type_check mypy --show-error-codes unittests --strict
+# pylint
+PYTHONPATH=src uv run --group linting pylint tmds_mcp
+PYTHONPATH=src uv run --group linting pylint unittests --rcfile=unittests/.pylintrc
+# coverage ≥ 80%
+PYTHONPATH=src uv run --group coverage coverage run -m pytest
+PYTHONPATH=src uv run --group coverage coverage report --fail-under 80 --omit "unittests/*"
+# black + isort
+uv run --group formatting black . --check
+uv run --group formatting isort . --check
+```
