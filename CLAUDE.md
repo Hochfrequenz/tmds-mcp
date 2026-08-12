@@ -35,9 +35,11 @@ The server only exposes read-only `TmdsClient` methods. Write operations (`updat
 ## CI
 
 ```
-tox -e tests       # pytest
-tox -e type_check  # mypy --strict
-tox -e linting     # pylint
-tox -e coverage    # coverage ≥ 80%
-tox -e formatting  # black + isort
+uv run --group tests pytest                 # pytest
+uv run --group type_check mypy --strict     # mypy --strict
+uv run --group linting pylint tmds_mcp      # pylint
+uv run --group coverage coverage run -m pytest  # coverage ≥ 80%
+uv run --group formatting black . --check   # black + isort
 ```
+
+(Set `PYTHONPATH=src` for the src layout.)

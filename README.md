@@ -77,12 +77,21 @@ Or add to your MCP client config (e.g. Claude Desktop):
 
 ## Development
 
-This project follows the [Hochfrequenz Python template](https://github.com/Hochfrequenz/python_template_repository):
+This project follows the [Hochfrequenz Python template](https://github.com/Hochfrequenz/python_template_repository) and uses [uv](https://docs.astral.sh/uv/) for dependency management.
+
+Install the full dev environment with:
 
 ```bash
-tox -e tests       # run tests
-tox -e type_check  # mypy --strict
-tox -e linting     # pylint
-tox -e coverage    # coverage ≥ 80 %
-tox -e formatting  # black + isort
+uv sync --group dev
+```
+
+Run the individual checks (each `--group` pulls in only what it needs):
+
+```bash
+PYTHONPATH=src uv run --group tests pytest                                    # run tests
+PYTHONPATH=src uv run --group type_check mypy --show-error-codes src/tmds_mcp --strict  # mypy --strict
+PYTHONPATH=src uv run --group linting pylint tmds_mcp                         # pylint
+PYTHONPATH=src uv run --group coverage coverage run -m pytest                 # coverage ≥ 80 %
+uv run --group formatting black . --check                                     # black
+uv run --group formatting isort . --check                                     # isort
 ```
