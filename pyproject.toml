@@ -37,7 +37,7 @@ tests = [
     "pytest-mock==3.15.1",
 ]
 linting = [
-    "pylint==4.0.6",
+    "pylint==4.0.7",
     {include-group = "tests"},
 ]
 type_check = [
