@@ -37,7 +37,7 @@ tests = [
     "pytest-mock==3.15.1",
 ]
 linting = [
-    "pylint==4.0.6",
+    "ruff==0.16.2",
     {include-group = "tests"},
 ]
 type_check = [
@@ -51,17 +51,12 @@ coverage = [
     "coverage==7.15.2",
     {include-group = "tests"},
 ]
-formatting = [
-    "black==26.5.1",
-    "isort==8.0.1",
-]
 dev = [
     {include-group = "tests"},
     {include-group = "linting"},
     {include-group = "type_check"},
     {include-group = "spell_check"},
     {include-group = "coverage"},
-    {include-group = "formatting"},
 ]
 
 [tool.uv]
@@ -91,16 +86,58 @@ sources = ["src"]
 asyncio_mode = "auto"
 testpaths = ["unittests"]
 
-[tool.black]
+[tool.ruff]
 line-length = 120
-target_version = ["py311", "py312", "py313", "py314"]
+extend-exclude = ["*.md"]
 
-[tool.isort]
-line_length = 120
-profile = "black"
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+    "I",
+    "UP",
+    "B",
+    "N",
+    "PL",
+    "RUF",
+    "SIM",
+    "C4",
+    "PTH",
+    "PT",
+    "RET",
+    "ARG",
+    "TC",
+    "PIE",
+    "RSE",
+    "ISC",
+    "S",
+]
+ignore = [
+    "PLR0913",  # too-many-arguments
+    "PLR0917",  # too-many-positional-arguments
+    "PLR0912",  # too-many-branches
+    "PLR0915",  # too-many-statements
+    "PLR2004",  # magic-value-comparison
+    "ISC001",   # single-line-implicit-string-concatenation (conflicts with ruff format)
+]
 
-[tool.pylint."MESSAGES CONTROL"]
-max-line-length = 120
+[tool.ruff.lint.isort]
+known-first-party = ["tmds_mcp"]
+
+[tool.ruff.lint.per-file-ignores]
+# Standing globs (hand-written): cover files that do not exist yet.
+"unittests/**" = [
+    "S101",     # assert-used
+    "PLR2004",  # magic-value-comparison
+]
+# Generated grandfathering for existing violations (zero lint churn); burn down over time.
+"src/tmds_mcp/server.py" = [
+    "PLC0415",  # import-outside-top-level
+]
+"unittests/test_server.py" = [
+    "UP017",    # datetime-timezone-utc
+]
 
 [tool.mypy]
 disable_error_code = []

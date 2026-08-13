@@ -42,13 +42,11 @@ PYTHONPATH=src uv run --group tests pytest
 # mypy --strict (src + unittests)
 PYTHONPATH=src uv run --group type_check mypy --show-error-codes src/tmds_mcp --strict
 PYTHONPATH=src uv run --group type_check mypy --show-error-codes unittests --strict
-# pylint
-PYTHONPATH=src uv run --group linting pylint tmds_mcp
-PYTHONPATH=src uv run --group linting pylint unittests --rcfile=unittests/.pylintrc
+# ruff (lint)
+PYTHONPATH=src uv run --group linting ruff check .
 # coverage ≥ 80%
 PYTHONPATH=src uv run --group coverage coverage run -m pytest
 PYTHONPATH=src uv run --group coverage coverage report --fail-under 80 --omit "unittests/*"
-# black + isort
-uv run --group formatting black . --check
-uv run --group formatting isort . --check
+# ruff (format)
+uv run --group linting ruff format --check .
 ```
