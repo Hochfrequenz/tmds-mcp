@@ -8,6 +8,9 @@
 ![Linting status badge](https://github.com/Hochfrequenz/tmds-mcp/workflows/Linting/badge.svg)
 ![Black status badge](https://github.com/Hochfrequenz/tmds-mcp/workflows/Formatting/badge.svg)
 
+> [!WARNING]  
+> This project is being discontinued in favor of a server-side MCP API.
+
 An [MCP](https://modelcontextprotocol.io/) server wrapping [`tmdsclient`](https://github.com/Hochfrequenz/tmdsclient.py), exposing read-only TMDS master data to AI assistants (e.g. Claude Desktop) for debugging.
 
 Requires **Python 3.11+**.
